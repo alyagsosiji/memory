@@ -8,8 +8,8 @@
 body, html {
     width: 100%;
     height: 100%;
-    overflow: hidden; /* 스크롤 바 숨김 */
-    background-color: #050510; /* 깊은 밤하늘 느낌의 짙은 네이비 배경 */
+    overflow: hidden;
+    background-color: #050510;
     font-family: 'Noto Sans KR', sans-serif;
     color: #ffffff;
 }
@@ -24,28 +24,49 @@ body, html {
     z-index: 1;
 }
 
-/* 상단 타이틀 안내 문구 */
+/* 🌌 [업그레이드] 상단 타이틀 안내 문구 스타일링 */
 #intro-text {
     position: absolute;
-    top: 8%;
-    width: 100%;
-    text-align: center;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 2;
-    pointer-events: none; /* 중요: 이 문구가 마우스 클릭을 방해하지 않도록 설정 */
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 16px 35px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
-#intro-text h1 {
-    font-size: 2.3rem;
+/* 큰 글자 (타이틀) 스타일 및 인터랙션 */
+#main-title {
+    font-size: 2.1rem;
     font-weight: 300;
-    letter-spacing: 6px;
-    margin-bottom: 12px;
+    letter-spacing: 8px;
+    margin-bottom: 6px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    cursor: pointer; /* 마우스 포인터 손가락 모양 변경 */
+    transition: all 0.4s ease;
+    display: inline-block;
+    padding: 0 0 0 8px; /* 글자 간격 정렬 맞춤 */
 }
 
+/* 큰 글자에 마우스 올렸을 때 효과 */
+#main-title:hover {
+    color: #bbf2ff; /* 산뜻한 우주 빛 푸른색으로 변경 */
+    text-shadow: 0 0 20px rgba(187, 242, 255, 0.8), 0 0 30px rgba(138, 153, 255, 0.4);
+    transform: scale(1.03); /* 아주 살짝 커지는 효과 */
+}
+
+/* 하단 안내 서브 텍스트 */
 #intro-text p {
-    font-size: 0.95rem;
-    opacity: 0.75;
-    letter-spacing: 2px;
+    font-size: 0.85rem;
+    opacity: 0.65;
+    letter-spacing: 1.5px;
+    pointer-events: none; /* 서브 텍스트는 클릭 방해 안 되게 차단 */
 }
 
 /* 배경을 흐리게 만들며 띄워지는 팝업 전체 창 */
@@ -55,8 +76,8 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(5, 5, 16, 0.5); /* 어두운 오버레이 */
-    backdrop-filter: blur(8px); /* 우주 배경이 반투명하게 흐려지는 효과 */
+    background: rgba(5, 5, 16, 0.4);
+    backdrop-filter: blur(8px);
     z-index: 10;
     display: flex;
     justify-content: center;
@@ -64,7 +85,6 @@ body, html {
     transition: opacity 0.5s ease;
 }
 
-/* 클래스 토글용: 팝업이 숨겨졌을 때 */
 #popup.hidden {
     opacity: 0;
     pointer-events: none;
@@ -72,18 +92,17 @@ body, html {
 
 /* 실제 내용이 담기는 팝업 박스 */
 .popup-content {
-    background: rgba(20, 20, 35, 0.85); /* 투명한 다크 블루 톤 */
-    border: 1px solid rgba(255, 255, 255, 0.15); /* 미세한 테두리 */
+    background: rgba(15, 15, 28, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     padding: 30px;
-    border-radius: 20px;
+    border-radius: 24px;
     width: 90%;
     max-width: 440px;
     position: relative;
     text-align: center;
-    box-shadow: 0 0 40px rgba(138, 153, 255, 0.2); /* 은은한 푸른 불빛 광채 */
+    box-shadow: 0 0 40px rgba(138, 153, 255, 0.25);
 }
 
-/* 닫기 버튼 (X) */
 #popup-close {
     position: absolute;
     top: 15px;
@@ -98,15 +117,13 @@ body, html {
     opacity: 1;
 }
 
-/* 추억 날짜 */
 .memory-date {
     font-size: 0.85rem;
-    color: #8a99ff; /* 부드러운 라벤더 블루 */
+    color: #8a99ff;
     margin-bottom: 6px;
     letter-spacing: 1.5px;
 }
 
-/* 추억 제목 */
 .popup-content h2 {
     font-size: 1.5rem;
     margin-bottom: 18px;
@@ -114,21 +131,19 @@ body, html {
     letter-spacing: 0.5px;
 }
 
-/* 팝업 내부 추억 사진 */
 .popup-content img {
     width: 100%;
     max-height: 260px;
-    object-fit: cover; /* 사진 비율 맞춤 */
-    border-radius: 12px;
+    object-fit: cover;
+    border-radius: 14px;
     margin-bottom: 18px;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* 추억 설명글 */
 #popup-desc {
     font-size: 0.95rem;
     line-height: 1.7;
     opacity: 0.9;
-    word-break: keep-all; /* 단어 단위 줄바꿈으로 깔끔하게 */
+    word-break: keep-all;
     text-align: justify;
 }
