@@ -324,3 +324,39 @@ window.addEventListener('resize', () => {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
+// ==========================================
+// 12. [보안 기능] 우클릭, 드래그, 개발자 도구(F12) 등 차단
+// ==========================================
+
+// 1. 마우스 우클릭(컨텍스트 메뉴) 방지
+window.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+});
+
+// 2. 화면 내 요소 드래그 앤 드롭 방지
+window.addEventListener('dragstart', (e) => {
+    e.preventDefault();
+});
+
+// 3. 주요 단축키 차단 (F12, 소스 보기, 개발자 도구 등)
+window.addEventListener('keydown', (e) => {
+    // F12 키 차단
+    if (e.key === 'F12' || e.keyCode === 123) {
+        e.preventDefault();
+    }
+    
+    // Ctrl + Shift + I (개발자 도구) / Ctrl + Shift + J 차단
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j')) {
+        e.preventDefault();
+    }
+    
+    // Ctrl + Shift + C (요소 검사) 차단
+    if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c')) {
+        e.preventDefault();
+    }
+    
+    // Ctrl + U (페이지 소스 보기) 차단
+    if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+        e.preventDefault();
+    }
+});
