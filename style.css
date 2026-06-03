@@ -147,3 +147,19 @@ body, html {
     word-break: keep-all;
     text-align: justify;
 }
+/* ==========================================
+   보안 및 UI 보호: 텍스트 선택 및 드래그 방지
+   ========================================== */
+body {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE 10+ */
+    user-select: none;         /* 기본 표준 */
+}
+
+/* 팝업창 안의 이미지 등이 드래그(고스트 이미지) 되는 현상 방지 */
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+}
