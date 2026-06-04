@@ -144,7 +144,7 @@ const memories = [
         image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=500",
         desc: "장미 77송이 만들어줘서 고마워. 우리의 이야기에 행운이 함께하기를.",
         position: { x: 8, y: 6, z: 30 },
-        color: #ff0000; // 장미와 같은 레드 행성
+        color: 0xff0000 // 장미와 같은 레드 행성
     }
 ];
 
