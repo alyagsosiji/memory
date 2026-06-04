@@ -143,7 +143,7 @@ const memories = [
         title: "너가 준 꽃다발",
         image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=500",
         desc: "장미 77송이 만들어줘서 고마워. 우리의 이야기에 행운이 함께하기를.",
-        position: { x: 18, y: 10, z: -25 },
+        position: { x: 21, y: 10, z: -25 },
         color: 0xff0000 // 장미와 같은 레드 행성
     }
 ];
