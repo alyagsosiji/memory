@@ -12,6 +12,10 @@ body, html {
     background-color: #050510;
     font-family: 'Noto Sans KR', sans-serif;
     color: #ffffff;
+    /* 보안 및 UI 보호: 텍스트 선택 방지 */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE 10+ */
+    user-select: none;         /* 기본 표준 */
 }
 
 /* 3D 화면 채우기 */
@@ -38,6 +42,8 @@ body, html {
     border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(4px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    width: max-content; /* 모바일 대응을 위한 설정 */
+    max-width: 90%;
 }
 
 /* 큰 글자 (타이틀) 스타일 및 인터랙션 */
@@ -48,17 +54,16 @@ body, html {
     margin-bottom: 6px;
     color: #ffffff;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    cursor: pointer; /* 마우스 포인터 손가락 모양 변경 */
+    cursor: pointer;
     transition: all 0.4s ease;
     display: inline-block;
-    padding: 0 0 0 8px; /* 글자 간격 정렬 맞춤 */
+    padding: 0 0 0 8px;
 }
 
-/* 큰 글자에 마우스 올렸을 때 효과 */
 #main-title:hover {
-    color: #bbf2ff; /* 산뜻한 우주 빛 푸른색으로 변경 */
+    color: #bbf2ff;
     text-shadow: 0 0 20px rgba(187, 242, 255, 0.8), 0 0 30px rgba(138, 153, 255, 0.4);
-    transform: scale(1.03); /* 아주 살짝 커지는 효과 */
+    transform: scale(1.03);
 }
 
 /* 하단 안내 서브 텍스트 */
@@ -66,7 +71,7 @@ body, html {
     font-size: 0.85rem;
     opacity: 0.65;
     letter-spacing: 1.5px;
-    pointer-events: none; /* 서브 텍스트는 클릭 방해 안 되게 차단 */
+    pointer-events: none;
 }
 
 /* 배경을 흐리게 만들며 띄워지는 팝업 전체 창 */
@@ -138,6 +143,11 @@ body, html {
     border-radius: 14px;
     margin-bottom: 18px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    /* 팝업창 안의 이미지 고스트 드래그 방지 */
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
 }
 
 #popup-desc {
@@ -147,19 +157,43 @@ body, html {
     word-break: keep-all;
     text-align: justify;
 }
-/* ==========================================
-   보안 및 UI 보호: 텍스트 선택 및 드래그 방지
-   ========================================== */
-body {
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none;     /* IE 10+ */
-    user-select: none;         /* 기본 표준 */
-}
 
-/* 팝업창 안의 이미지 등이 드래그(고스트 이미지) 되는 현상 방지 */
-img {
-    -webkit-user-drag: none;
-    -khtml-user-drag: none;
-    -moz-user-drag: none;
-    -o-user-drag: none;
+/* ==========================================
+   📱 모바일 디바이스 최적화 (화면 너비 768px 이하)
+   ========================================== */
+@media screen and (max-width: 768px) {
+    #intro-text {
+        top: 3%;
+        padding: 12px 20px;
+        width: 90%;
+    }
+    
+    #main-title {
+        font-size: 1.4rem; /* 모바일 폰트 크기 축소 */
+        letter-spacing: 4px; /* 자간 축소 */
+    }
+
+    #intro-text p {
+        font-size: 0.75rem;
+    }
+
+    .popup-content {
+        padding: 20px;
+        max-height: 90vh; /* 화면을 넘지 않도록 최대 높이 설정 */
+        overflow-y: auto; /* 내용이 길면 스크롤 가능하게 */
+    }
+
+    .popup-content h2 {
+        font-size: 1.25rem;
+    }
+
+    .popup-content img {
+        max-height: 200px;
+    }
+    
+    #popup-close {
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+    }
 }
