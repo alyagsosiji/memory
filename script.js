@@ -136,6 +136,15 @@ const memories = [
         desc: "자주 만나지 못하더라도, 우리는 언제나 함께 있어.",
         position: { x: 8, y: 6, z: 30 },
         color: 0xff66aa // 로맨틱 핑크 행성
+    },
+    {
+        id: 3,
+        date: "2026.06.06",
+        title: "너가 준 꽃다발",
+        image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=500",
+        desc: "장미 77송이 만들어줘서 고마워. 우리의 이야기에 행운이 함께하기를.",
+        position: { x: 8, y: 6, z: 30 },
+        color: #ff0000; // 장미와 같은 레드 행성
     }
 ];
 
